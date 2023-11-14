@@ -23,6 +23,15 @@ class _HomepageState extends State<Homepage> {
     _currencyData = ApiCaller().fetchCurrencyData();
   }
 
+  List<Datum> getFilteredItems(List<Currency> currencyList) {
+    // Flatten the list of currencies and filter items based on the search text
+    return currencyList
+        .expand((currency) => currency.data.values)
+        .where((item) =>
+            item.code.toLowerCase().contains(_searchText.toLowerCase()))
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +40,11 @@ class _HomepageState extends State<Homepage> {
             child: GlowingOverscrollIndicator(
           axisDirection: AxisDirection.down,
           color: Colors.cyanAccent,
-          child: const Text(
-            "Currency Convert",
-            style: TextStyle(color: Color.fromRGBO(115, 255, 171, 1)),
+          child: Text(
+            "แปลงสกุลเงิน",
+            style: TextStyle(
+                color: Color.fromRGBO(115, 255, 171, 1),
+                fontWeight: FontWeight.bold),
           ),
         )),
         elevation: 0,
@@ -129,14 +140,5 @@ class _HomepageState extends State<Homepage> {
         ],
       ),
     );
-  }
-
-  List<Datum> getFilteredItems(List<Currency> currencyList) {
-    // Flatten the list of currencies and filter items based on the search text
-    return currencyList
-        .expand((currency) => currency.data.values)
-        .where((item) =>
-            item.code.toLowerCase().contains(_searchText.toLowerCase()))
-        .toList();
   }
 }

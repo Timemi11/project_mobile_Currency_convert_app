@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "json-server": "^0.17.4"
+  },
+  "name": "convert_app",
+  "description": "A new Flutter project.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "run-server": "json-server --watch data.json"
+  },
+  "author": "",
+  "license": "ISC"
+}

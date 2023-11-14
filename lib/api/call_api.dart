@@ -8,7 +8,7 @@ class ApiCaller {
 
     try {
       final response = await dio.get(
-        'https://api.currencyapi.com/v3/latest?apikey=cur_live_h9pU88fdw0y9PbFPy56BKp26Gj1bcKoGqY1ir6c0',
+        'http://localhost:3000/api',
       );
 
       if (response.statusCode == 200) {
